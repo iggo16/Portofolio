@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewporto" content="width=device-width, initial-scale=1.0">
-    <title>portofolio Developer Profesional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Developer Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -106,44 +106,13 @@
         }
     </style>
 </head>
-<script>
-    function showSlide(carousel, index) {
-        const inner = carousel.querySelector('.carousel-inner');
-        const items = carousel.querySelectorAll('.carousel-item');
-        const total = items.length;
-
-        // Looping index (biar kalau > total balik ke awal, kalau < 0 ke akhir)
-        if (index >= total) index = 0;
-        if (index < 0) index = total - 1;
-
-        // Update posisi slide
-        inner.style.transform = `translateX(-${index * 100}%)`;
-        inner.dataset.currentIndex = index;
-    }
-
-    function nextSlide(carousel) {
-        let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
-        showSlide(carousel, index + 1);
-    }
-
-    function prevSlide(carousel) {
-        let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
-        showSlide(carousel, index - 1);
-    }
-
-    // Inisialisasi semua carousel biar start di index 0
-    document.querySelectorAll('.carousel-inner').forEach(inner => {
-        inner.dataset.currentIndex = 0;
-    });
-</script>
-
 
 <body class="bg-dark text-light font-sans">
     <!-- Navigation Header -->
     <nav class="bg-secondary fixed w-full z-50 shadow-lg">
         <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-primary">portofolio</h1>
+            <div class="flex flex-wrap justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary">Portofolio</h1>
                 <div class="hidden md:flex space-x-8">
                     <a href="#tentang"
                         class="nav-link text-light hover:text-primary transition duration-300">Tentang</a>
@@ -152,13 +121,15 @@
                     <a href="#pengalaman"
                         class="nav-link text-light hover:text-primary transition duration-300">Pengalaman</a>
                     <a href="#portofolio"
-                        class="nav-link text-light hover:text-primary transition duration-300">portofolio</a>
+                        class="nav-link text-light hover:text-primary transition duration-300">Portofolio</a>
                     <a href="#kontak" class="nav-link text-light hover:text-primary transition duration-300">Kontak</a>
                 </div>
-                <a href="#"
-                    class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
-                    <i class="fas fa-download mr-2"></i>Unduh CV
-                </a>
+                <div class="w-full md:w-auto mt-3 md:mt-0 text-center md:text-left">
+                    <a href="#"
+                        class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                        <i class="fas fa-download mr-2"></i>Unduh CV
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -167,14 +138,14 @@
     <header class="pt-32 pb-20 bg-gradient-to-br from-secondary to-dark">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
                     <h1 class="text-5xl font-bold mb-4">Abdul Wahid</h1>
                     <p class="text-xl text-primary mb-6">Fresh Graduate</p>
                     <p class="text-light/80 mb-8 leading-relaxed">
                         Developer yang sangat biasa aja dengan keahlian dalam membuat aplikasi web modern
                         menggunakan teknologi terbaru dengan fokus pada performa dan user experience.
                     </p>
-                    <div class="flex space-x-4">
+                    <div class="flex flex-wrap justify-center md:justify-start space-x-4">
                         <a href="#portofolio"
                             class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
                             Lihat portofolio
@@ -185,9 +156,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="md:w-2/5">
-                    <div class="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
-                        <img src="https://i.imgur.com/kc2Fk2u.jpeg" alt="Foto  profil"
+                <div class="md:w-2/5 flex justify-center md:justify-end">
+                    <div class="w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                        <img src="https://i.imgur.com/kc2Fk2u.jpeg" alt="Foto profil"
                             class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -200,14 +171,14 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-primary">Tentang Saya</h2>
             <div class="flex flex-col lg:flex-row items-center justify-between">
-                <div class="lg:w-2/5 mb-10 lg:mb-0">
-                    <div class="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                <div class="lg:w-2/5 mb-10 lg:mb-0 flex justify-center">
+                    <div class="w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
                         <img src="https://media.tenor.com/7lHdnabfyTQAAAAi/herta-kurukuru.gif" alt="foto tambahan"
                             class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="lg:w-1/2">
-                    <div class="text-lg leading-relaxed">
+                    <div class="text-lg leading-relaxed text-center lg:text-left">
                         <p class="mb-6">
                             Saya adalah seorang <span class="text-primary font-semibold">Full Stack Web Developer</span>
                             dengan lebih dari 3 tahun pengalaman
@@ -228,26 +199,8 @@
                             serta selalu berfokus pada memberikan nilai terbaik untuk pengguna akhir.
                         </p>
                     </div>
-                    <!-- <div class="grid grid-cols-2 gap-6 mt-8">
-                        <div class="bg-dark/50 p-4 rounded-lg">
-                            <h4 class="text-primary font-semibold mb-2">Frontend</h4>
-                            <p>React, Vue, HTML5, CSS3, JavaScript</p>
-                        </div>
-                        <div class="bg-dark/50 p-4 rounded-lg">
-                            <h4 class="text-primary font-semibold mb-2">Backend</h4>
-                            <p>Node.js, Express, Python, Django</p>
-                        </div>
-                        <div class="bg-dark/50 p-4 rounded-lg">
-                            <h4 class="text-primary font-semibold mb-2">Database</h4>
-                            <p>MongoDB, PostgreSQL, MySQL</p>
-                        </div>
-                        <div class="bg-dark/50 p-4 rounded-lg">
-                            <h4 class="text-primary font-semibold mb-2">Tools</h4>
-                            <p>Git, Docker, AWS, Figma</p>
-                        </div> -->
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -261,7 +214,7 @@
                     </h3>
                     <p class="text-primary/80 mb-4">2018 - 2021</p>
                     <p class="text-light/80 leading-relaxed">
-                        Jurusan Tenik Elektronika Industri mendalami dasar-dasar kelistrikan, sistem kontrol otomatis,
+                        Jurusan Teknik Elektronika Industri mendalami dasar-dasar kelistrikan, sistem kontrol otomatis,
                         rangkaian digital, dan
                         pemrograman mikrokontroler. Terbiasa merakit dan menganalisis perangkat elektronik
                         serta menggunakan alat ukur dan simulasi teknik.
@@ -335,7 +288,6 @@
                 </div>
             </div>
 
-            <!-- Pengalaman Kerja 2 -->
             <div class="max-w-4xl mx-auto">
                 <h3 class="text-2xl font-semibold mb-4 text-primary">Praktek Kerja Nyata</h3>
                 <p class="text-primary/80 mb-4">Salon Sofie | Sistem Keamanan Salon Berbasis IOT</p>
@@ -378,13 +330,11 @@
         </div>
     </section>
 
-    <!-- portofolio -->
+    <!-- Portofolio -->
     <section id="portofolio" class="py-20 bg-dark">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-primary">portofolio</h2>
-
+            <h2 class="text-4xl font-bold text-center mb-16 text-primary">Portofolio</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Project 1: Web E-commerce -->
                 <div class="bg-secondary shadow-lg rounded-xl overflow-hidden">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold mb-3 text-primary">Game Horror 3D The Unread</h3>
@@ -433,7 +383,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Aplikasi Mobile -->
                 <div class="bg-secondary shadow-lg rounded-xl overflow-hidden">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold mb-3 text-primary">Web Keamanan Salon Berbasis IoT</h3>
@@ -471,7 +420,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Dashboard Admin -->
                 <div class="bg-secondary shadow-lg rounded-xl overflow-hidden md:col-span-2">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold mb-3 text-primary">Dashboard Admin</h3>
@@ -513,6 +461,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Kontak -->
     <section id="kontak" class="py-20 bg-secondary">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold text-primary mb-12">Kontak</h2>
@@ -536,3 +486,34 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function showSlide(carousel, index) {
+            const inner = carousel.querySelector('.carousel-inner');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const total = items.length;
+
+            if (index >= total) index = 0;
+            if (index < 0) index = total - 1;
+
+            inner.style.transform = `translateX(-${index * 100}%)`;
+            inner.dataset.currentIndex = index;
+        }
+
+        function nextSlide(carousel) {
+            let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
+            showSlide(carousel, index + 1);
+        }
+
+        function prevSlide(carousel) {
+            let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
+            showSlide(carousel, index - 1);
+        }
+
+        document.querySelectorAll('.carousel-inner').forEach(inner => {
+            inner.dataset.currentIndex = 0;
+        });
+    </script>
+</body>
+
+</html>
