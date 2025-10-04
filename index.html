@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewporto" content="width=device-width, initial-scale=1.0">
+    <title>portofolio Developer Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E293B',
+                        accent: '#6366F1',
+                        dark: '#0F172A',
+                        light: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .carousel {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .carousel:hover .carousel-control {
+            opacity: 1;
+        }
+
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-control.prev {
+            left: 15px;
+        }
+
+        .carousel-control.next {
+            right: 15px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .form-input {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #f8fafc;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<script>
+    function showSlide(carousel, index) {
+        const inner = carousel.querySelector('.carousel-inner');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const total = items.length;
+
+        // Looping index (biar kalau > total balik ke awal, kalau < 0 ke akhir)
+        if (index >= total) index = 0;
+        if (index < 0) index = total - 1;
+
+        // Update posisi slide
+        inner.style.transform = `translateX(-${index * 100}%)`;
+        inner.dataset.currentIndex = index;
+    }
+
+    function nextSlide(carousel) {
+        let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
+        showSlide(carousel, index + 1);
+    }
+
+    function prevSlide(carousel) {
+        let index = parseInt(carousel.querySelector('.carousel-inner').dataset.currentIndex);
+        showSlide(carousel, index - 1);
+    }
+
+    // Inisialisasi semua carousel biar start di index 0
+    document.querySelectorAll('.carousel-inner').forEach(inner => {
+        inner.dataset.currentIndex = 0;
+    });
+</script>
+
+
+<body class="bg-dark text-light font-sans">
+    <!-- Navigation Header -->
+    <nav class="bg-secondary fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary">portofolio</h1>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#tentang"
+                        class="nav-link text-light hover:text-primary transition duration-300">Tentang</a>
+                    <a href="#pendidikan"
+                        class="nav-link text-light hover:text-primary transition duration-300">Pendidikan</a>
+                    <a href="#pengalaman"
+                        class="nav-link text-light hover:text-primary transition duration-300">Pengalaman</a>
+                    <a href="#portofolio"
+                        class="nav-link text-light hover:text-primary transition duration-300">portofolio</a>
+                    <a href="#kontak" class="nav-link text-light hover:text-primary transition duration-300">Kontak</a>
+                </div>
+                <a href="#"
+                    class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                    <i class="fas fa-download mr-2"></i>Unduh CV
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Profile -->
+    <header class="pt-32 pb-20 bg-gradient-to-br from-secondary to-dark">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-5xl font-bold mb-4">Abdul Wahid</h1>
+                    <p class="text-xl text-primary mb-6">Fresh Graduate</p>
+                    <p class="text-light/80 mb-8 leading-relaxed">
+                        Developer yang sangat biasa aja dengan keahlian dalam membuat aplikasi web modern
+                        menggunakan teknologi terbaru dengan fokus pada performa dan user experience.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#portofolio"
+                            class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                            Lihat portofolio
+                        </a>
+                        <a href="#kontak"
+                            class="border border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary/10 transition duration-300">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-2/5">
+                    <div class="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                        <img src="https://i.imgur.com/kc2Fk2u.jpeg" alt="Foto  profil"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tentang Saya -->
+    <section id="tentang" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-primary">Tentang Saya</h2>
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-2/5 mb-10 lg:mb-0">
+                    <div class="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                        <img src="https://media.tenor.com/7lHdnabfyTQAAAAi/herta-kurukuru.gif" alt="foto tambahan"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="text-lg leading-relaxed">
+                        <p class="mb-6">
+                            Saya adalah seorang <span class="text-primary font-semibold">Full Stack Web Developer</span>
+                            dengan lebih dari 3 tahun pengalaman
+                            dalam mengembangkan aplikasi web modern. Saya memiliki passion dalam menciptakan solusi
+                            digital
+                            yang tidak hanya responsive dan user-friendly, tetapi juga memiliki performa optimal dan
+                            skalabilitas yang baik.
+                        </p>
+                        <p class="mb-6">
+                            Dengan latar belakang pendidikan di bidang Teknologi Informasi, saya telah menguasai
+                            berbagai
+                            teknologi modern termasuk React, Node.js, Python, dan berbagai framework terkini. Saya
+                            selalu
+                            bersemangat untuk mempelajari teknologi baru dan tantangan dalam dunia development.
+                        </p>
+                        <p>
+                            Saya percaya bahwa kode yang baik adalah kode yang bersih, terorganisir, dan mudah dipahami,
+                            serta selalu berfokus pada memberikan nilai terbaik untuk pengguna akhir.
+                        </p>
+                    </div>
+                    <!-- <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="bg-dark/50 p-4 rounded-lg">
+                            <h4 class="text-primary font-semibold mb-2">Frontend</h4>
+                            <p>React, Vue, HTML5, CSS3, JavaScript</p>
+                        </div>
+                        <div class="bg-dark/50 p-4 rounded-lg">
+                            <h4 class="text-primary font-semibold mb-2">Backend</h4>
+                            <p>Node.js, Express, Python, Django</p>
+                        </div>
+                        <div class="bg-dark/50 p-4 rounded-lg">
+                            <h4 class="text-primary font-semibold mb-2">Database</h4>
+                            <p>MongoDB, PostgreSQL, MySQL</p>
+                        </div>
+                        <div class="bg-dark/50 p-4 rounded-lg">
+                            <h4 class="text-primary font-semibold mb-2">Tools</h4>
+                            <p>Git, Docker, AWS, Figma</p>
+                        </div> -->
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Pendidikan -->
+    <section id="pendidikan" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-primary">Pendidikan</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-secondary p-8 rounded-xl border-l-4 border-primary shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-primary">SMKN 2 Kraksaan Teknik Elektronika Industri
+                    </h3>
+                    <p class="text-primary/80 mb-4">2018 - 2021</p>
+                    <p class="text-light/80 leading-relaxed">
+                        Jurusan Tenik Elektronika Industri mendalami dasar-dasar kelistrikan, sistem kontrol otomatis,
+                        rangkaian digital, dan
+                        pemrograman mikrokontroler. Terbiasa merakit dan menganalisis perangkat elektronik
+                        serta menggunakan alat ukur dan simulasi teknik.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Dasar Elektronika dan
+                            Kelistrikan</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Perakitan dan
+                            Pemeliharaan Perangkat Elektronik</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">PLC</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Mikrokontroler</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-8 rounded-xl border-l-4 border-primary shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-primary">Institut Teknologi Nasional Malang S1 Teknik
+                        Informatika</h3>
+                    <p class="text-primary/80 mb-4">2021 - 2025</p>
+                    <p class="text-light/80 leading-relaxed">
+                        Jurusan Teknik Informatika dengan spesialisasi dalam pengembangan web dan aplikasi mobile.
+                        Memperdalam pengetahuan algoritma, struktur data, software engineering, dan pengembangan
+                        aplikasi modern.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Web Development</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Mobile
+                            Development</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Software
+                            Engineering</span>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Database Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengalaman Kerja -->
+    <section id="pengalaman" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-primary">Pengalaman Kerja</h2>
+
+            <div class="max-w-4xl mx-auto mb-16">
+                <h3 class="text-2xl font-semibold mb-4 text-primary">Praktik Kerja Lapangan</h3>
+                <p class="text-primary/80 mb-4">Dinas Perhubungan Kabupaten Probolinggo | Penerangan Jalan Umum</p>
+                <p class="mb-6 text-light/80">
+                    Melaksanakan tugas teknis terkait pemeliharaan dan instalasi perangkat elektronik
+                    seperti rambu lalu lintas dan sistem kelistrikan jalan. Mengasah keterampilan analisis,
+                    kerja lapangan, serta dokumentasi teknis dalam lingkungan kerja pemerintahan.
+                </p>
+
+                <div class="carousel relative mb-4">
+                    <div class="carousel-inner" data-current-index="0">
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/qv1vJXT.jpeg" alt="Foto 1 pkl"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/W5Z5S2M.jpeg" alt="Foto 2 pkl"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/t4NL9mg.jpeg" alt="Foto 3 pkl"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                    </div>
+                    <button class="carousel-control prev" onclick="prevSlide(this.parentNode)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-control next" onclick="nextSlide(this.parentNode)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pengalaman Kerja 2 -->
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-4 text-primary">Praktek Kerja Nyata</h3>
+                <p class="text-primary/80 mb-4">Salon Sofie | Sistem Keamanan Salon Berbasis IOT</p>
+                <p class="mb-6 text-light/80">
+                    Merancang sistem keamanan IoT dengan pemantauan real-time melalui web untuk
+                    meningkatkan keamanan salon secara efisien.
+                </p>
+
+                <div class="carousel relative mb-4">
+                    <div class="carousel-inner" data-current-index="0">
+                        <div class="carousel-item">
+                            <img src="https://pixelz.cc/wp-content/uploads/2018/09/iot-internet-of-things-uhd-4k-wallpaper.jpg"
+                                alt="Foto 1 PKN" class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/s65DuBY.png" alt="Foto 2 PKN"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/GCmL8A8.jpeg" alt="Foto 3 PKN"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/ijoe53w.jpeg" alt="Foto 4 PKN"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.imgur.com/pGr3RKY.jpeg" alt="Foto 5 PKN"
+                                class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                        </div>
+                    </div>
+                    <button class="carousel-control prev" onclick="prevSlide(this.parentNode)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-control next" onclick="nextSlide(this.parentNode)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- portofolio -->
+    <section id="portofolio" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-primary">portofolio</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Project 1: Web E-commerce -->
+                <div class="bg-secondary shadow-lg rounded-xl overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-primary">Game Horror 3D The Unread</h3>
+                        <p class="text-light/80 mb-6 leading-relaxed">
+                            Platform e-commerce lengkap dengan fitur keranjang belanja, pembayaran online, dan manajemen
+                            inventori menggunakan React dan Node.js.
+                        </p>
+                        <div class="carousel relative mb-6">
+                            <div class="carousel-inner" data-current-index="0">
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/h92nLqk.png" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/cEnTOgy.png" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/Jow8ODj.png" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/ZDuRuyp.png" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/ZXcO54e.jpeg" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.imgur.com/mdX2xsp.png" alt="Game"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                            </div>
+                            <button class="carousel-control prev" onclick="prevSlide(this.parentNode)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next" onclick="nextSlide(this.parentNode)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <a href="#" target="_blank"
+                            class="inline-block bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Aplikasi Mobile -->
+                <div class="bg-secondary shadow-lg rounded-xl overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-primary">Web Keamanan Salon Berbasis IoT</h3>
+                        <p class="text-light/80 mb-6 leading-relaxed">
+                            Aplikasi mobile berbasis Android untuk manajemen tugas harian, dengan notifikasi pengingat
+                            dan integrasi kalender, dikembangkan menggunakan React Native & Firebase.
+                        </p>
+                        <div class="carousel relative mb-6">
+                            <div class="carousel-inner" data-current-index="0">
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/600x400/1e293b/ffffff?text=Mobile+App+Screenshot+1"
+                                        alt="Screenshot halaman utama aplikasi mobile"
+                                        class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/600x400/1e293b/ffffff?text=Mobile+App+Screenshot+2"
+                                        alt="Screenshot fitur daftar tugas" class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/600x400/1e293b/ffffff?text=Mobile+App+Screenshot+3"
+                                        alt="Screenshot pengingat kalender" class="w-full h-48 object-cover rounded-lg">
+                                </div>
+                            </div>
+                            <button class="carousel-control prev" onclick="prevSlide(this.parentNode)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next" onclick="nextSlide(this.parentNode)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <a href="#" target="_blank"
+                            class="inline-block bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Dashboard Admin -->
+                <div class="bg-secondary shadow-lg rounded-xl overflow-hidden md:col-span-2">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-primary">Dashboard Admin</h3>
+                        <p class="text-light/80 mb-6 leading-relaxed">
+                            Dashboard interaktif untuk analisis data bisnis, dilengkapi grafik, laporan dinamis, dan
+                            manajemen user. Dibangun menggunakan Vue.js, Chart.js, dan API backend Node.js.
+                        </p>
+                        <div class="carousel relative mb-6">
+                            <div class="carousel-inner" data-current-index="0">
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/1000x400/1e293b/ffffff?text=Dashboard+Screenshot+1"
+                                        alt="Screenshot dashboard utama dengan grafik penjualan"
+                                        class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/1000x400/1e293b/ffffff?text=Dashboard+Screenshot+2"
+                                        alt="Screenshot manajemen user"
+                                        class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://via.placeholder.com/1000x400/1e293b/ffffff?text=Dashboard+Screenshot+3"
+                                        alt="Screenshot laporan penjualan bulanan"
+                                        class="w-full max-w-md aspect-[4/3] object-cover rounded-lg mx-auto">
+                                </div>
+                            </div>
+                            <button class="carousel-control prev" onclick="prevSlide(this.parentNode)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next" onclick="nextSlide(this.parentNode)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <a href="#" target="_blank"
+                            class="inline-block bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="kontak" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-12">Kontak</h2>
+            <p class="text-light/80 mb-8">Jangan ragu untuk menghubungi saya melalui salah satu kontak berikut:</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <a href="mailto:abdulwahid@email.com"
+                    class="flex items-center space-x-3 bg-dark/60 hover:bg-dark px-6 py-4 rounded-lg transition">
+                    <i class="fas fa-envelope text-primary text-2xl"></i>
+                    <span class="text-light">abdulwahid@email.com</span>
+                </a>
+                <a href="tel:+6281234567890"
+                    class="flex items-center space-x-3 bg-dark/60 hover:bg-dark px-6 py-4 rounded-lg transition">
+                    <i class="fas fa-phone text-primary text-2xl"></i>
+                    <span class="text-light">+62 812-3456-7890</span>
+                </a>
+                <a href="https://instagram.com/username" target="_blank"
+                    class="flex items-center space-x-3 bg-dark/60 hover:bg-dark px-6 py-4 rounded-lg transition">
+                    <i class="fab fa-instagram text-primary text-2xl"></i>
+                    <span class="text-light">@username</span>
+                </a>
+            </div>
+        </div>
+    </section>
